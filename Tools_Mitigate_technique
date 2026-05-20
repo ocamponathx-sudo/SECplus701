@@ -37,6 +37,59 @@ ip addr dhcp
 no shut
 end
 
+-------------
+
+conf t
+logging on
+logging host 208.8.8.133 transport udp port 9001
+logging trap informational
+end
+
+-------------
+
+conf t
+login on-failure log
+login on-success log
+end
+
+-------------
+
+conf t
+access-list 100 deny ip any host 208.8.8.111 log
+acces-list 100 permit ip any any
+int g1
+ip access-group 100 in
+end
+-------------
+!to fix
+conf t
+int g1
+no ip access-group 100 in
+end
+-------------
+!block porn sites
+conf t
+no ip access-list standard NOPORN
+ip access-list standard NOPORN
+config t
+NO ip access-list standard NOPORN
+ip access-list standard NOPORN
+DENY 66.254.0.0 0.0.255.255  log
+deny 161.49.0.0 0.0.255.255  log
+DENY 104.21.0.0 0.0.255.255  log
+DENY 68.235.0.0 0.0.255.255  log
+DENY 104.17.0.0 0.0.255.255  log
+DENY 88.208.0.0 0.0.255.255  log
+DENY 208.77.0.0 0.0.255.255  log
+DENY 172.67.0.0 0.0.255.255  log
+DENY 172.66.0.0 0.0.255.255  log
+DENY 162.159.0.0 0.0.255.255 log
+Permit Any
+Int Gi 1
+ ip access-group NOPORN in
+end
+-------------
+
 
 http://208.8.8.133:5601 = elkstack ui
 admin
