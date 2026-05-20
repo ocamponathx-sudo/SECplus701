@@ -55,23 +55,29 @@ end
 -------------
 
 conf t
-access-list 100 deny ip any host 208.8.8.111 log
+access-list 100 deny ip any host 208.8.8.40 log
 acces-list 100 permit ip any any
 int g1
 ip access-group 100 in
 end
+
 -------------
+
 !to fix
 conf t
 int g1
 no ip access-group 100 in
 end
+
 -------------
+
 !block porn sites
 conf t
 no ip access-list standard NOPORN
 ip access-list standard NOPORN
-config t
+end
+
+conf t
 NO ip access-list standard NOPORN
 ip access-list standard NOPORN
 DENY 66.254.0.0 0.0.255.255  log
@@ -88,6 +94,7 @@ Permit Any
 Int Gi 1
  ip access-group NOPORN in
 end
+
 -------------
 
 
@@ -95,8 +102,31 @@ http://208.8.8.133:5601 = elkstack ui
 admin
 C1sc0123
 
-http://208.8.8.175 = firewall1k ui
+http://208.8.8.40 = firewall1k ui
 admin
 pass
 
+---------------
 
+!@zabbix appliance
+
+root
+zabbix
+
+ip addr
+
+dnf install net-snmp-utils -y
+
+http://208.8.8.255/
+
+-------------------------
+
+!@put in for snmpV2 firewall1k
+access-list 10 permit 192.168.1.10
+snmp-server community public RO 10
+
+snmpv3
+snmp-server group zabbix v3 priv
+snmp-server user admin zabbix v3 auth sha C1sc0123 priv aes 128 C1sc0123
+
+------------------------------
