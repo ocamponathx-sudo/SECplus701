@@ -28,6 +28,7 @@ C1sc0123
 systemctl start elasticsearch.service
 ip addr
 
+
 !@firewall1k
 en
 conf t
@@ -36,5 +37,13 @@ ip addr dhcp
 no shut
 end
 
+
+http://208.8.8.133:5601 = elkstack ui
+admin
+C1sc0123
+
+http://208.8.8.175 = firewall1k ui
+admin
+pass
 
 
