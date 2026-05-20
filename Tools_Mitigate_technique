@@ -122,11 +122,15 @@ http://208.8.8.255/
 -------------------------
 
 !@put in for snmpV2 firewall1k
-access-list 10 permit 192.168.1.10
+conf t
+access-list 10 permit 208.8.8.225
 snmp-server community public RO 10
 
-snmpv3
+!@snmpv3
+conf t
 snmp-server group zabbix v3 priv
 snmp-server user admin zabbix v3 auth sha C1sc0123 priv aes 128 C1sc0123
 
 ------------------------------
+
+
