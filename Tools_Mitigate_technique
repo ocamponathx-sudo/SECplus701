@@ -4,9 +4,10 @@ https://attack.mitre.org/
 https://wazuh.com/
 
 
-SIEM
-XDR
-LOGS ELK STACK
+1. SIEM
+2. XDR
+3. LOGS ELK STACK
+4. suricata
 
 !@wazuh
 admin: root
