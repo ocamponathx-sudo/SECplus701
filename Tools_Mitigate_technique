@@ -2,3 +2,22 @@ https://attack.mitre.org/
 
 
 https://wazuh.com/
+
+
+SIEM
+XDR
+LOGS ELK STACK
+
+!@wazuh
+admin: root
+password: C1sc0123
+command: ip addr
+command: sudo systemctl stop firewalld
+
+!@browser-edge:
+https://208.8.8.28/
+
+admin: admin
+password: C1sc0123..
+
+
