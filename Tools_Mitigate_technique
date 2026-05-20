@@ -22,3 +22,19 @@ admin: admin
 password: C1sc0123..
 
 
+!@elastic elk stack
+root
+C1sc0123
+systemctl start elasticsearch.service
+ip addr
+
+!@firewall1k
+en
+conf t
+int g1
+ip addr dhcp
+no shut
+end
+
+
+
