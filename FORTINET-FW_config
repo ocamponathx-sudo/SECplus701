@@ -1,0 +1,17 @@
+config system interface
+ edit port1
+  set mode static
+  set ip 208.8.8.11 255.255.255.0 
+  set allowaccess ping https ssh telnet http
+  set role WAN
+  set alias "INTERNET"
+  set status up
+  next
+  edit port2
+  set mode static
+  set ip 192.168.102.11 255.255.255.0
+  set allowaccess ping
+  set role LAN
+  set alias "INTERNAL"
+  set status up
+ end
